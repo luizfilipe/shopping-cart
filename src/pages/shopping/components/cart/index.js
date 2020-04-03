@@ -5,32 +5,18 @@ import { Container, Title } from './styles'
 import { Info } from '../info'
 import { Discount } from '../discount'
 import { MINE_SHAFT } from '../../../../styles/colors'
-
-const vouchers = [
-  {
-    'id': 1,
-    'code': '#30OFF',
-    'type': 'percentual',
-    'amount': 30.0
-  },
-  {
-    'id': 2,
-    'code': '#100DOLLARS',
-    'type': 'fixed',
-    'amount': 100.0
-  },
-  {
-    'id': 3,
-    'code': '#SHIPIT',
-    'type': 'shipping',
-    'amount': 0,
-    'minValue': 300.50
-  }
-]
+import { getVouchers } from '../../../../services/vouchers'
 
 export const Cart = () => {
   const [discount, setDiscount] = useState(0)
+  const [vouchers, setVouchers] = useState([])
   const cart = useSelector(state => state.cart)
+
+  useEffect(() => {
+    getVouchers()
+      .then(result => setVouchers(result.vouchers))
+      .catch(console.error)
+  }, [])
 
   useEffect(() => {
     setDiscount(0)

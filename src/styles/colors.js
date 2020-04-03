@@ -1,0 +1,7 @@
+export const MINE_SHAFT = '#333'
+export const DUSTY_GRAY = '#999999'
+export const DOVE_GRAY = '#666666'
+export const ALTO = '#d8d8d8'
+export const GALLERY = '#efefef'
+export const MERCURY = '#e9e9e9'
+export const SILVER = '#bbb'
